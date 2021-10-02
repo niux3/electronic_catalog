@@ -26,7 +26,7 @@ $router->group([], function () use ($router) {
         'as' => 'products_create', 'uses' => 'ProductsController@create'
     ]);
 
-    $router->put('/products/update{id}', [
+    $router->put('/products/{id}', [
         'as' => 'products_update', 'uses' => 'ProductsController@update'
     ]);
 
