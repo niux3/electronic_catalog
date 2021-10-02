@@ -28,15 +28,17 @@ Toutes vos entités doivent comporter les champs timestamp created_at, and modif
 Produits :
 Vos produits doivent comporter les attributs suivants :
 
-name
-category
-sku
-price
-quantity
+- name
+- category
+- sku
+- price
+- quantity
 
 Seed / Import (bonus) :
 Importer le contenu du fichier electronic-catalog.json dans votre base de données.
+
 // electronic-catalog.json
+```json
 {
   "products": [
     {
@@ -79,7 +81,7 @@ Importer le contenu du fichier electronic-catalog.json dans votre base de donné
     }
   ]
 }
-
+```
 Critères de réussite :
 
 Pour plus de transparence, voici sur quoi vous allez être challengé :
