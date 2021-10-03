@@ -19,7 +19,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $fillable = [
-        'name', 'email',
+        'name',
+        'email',
+        'password'
     ];
 
     /**
@@ -29,5 +31,11 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     protected $hidden = [
         'password',
+    ];
+
+    public static $rules = [
+        'name' => 'required',
+        'email' => 'required|email|unique:users',
+        'password'=> 'required|min:3|confirmed',
     ];
 }

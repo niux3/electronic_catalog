@@ -70,7 +70,8 @@
         }
 
 
-        public function testShouldUpdateProduct(){
+        public function testShouldUpdateProduct()
+        {
             $sku = "A";
             for($i = 0, $len = 4; $i < $len; $i++){
                 $sku .= mt_rand(1,9);
@@ -97,7 +98,8 @@
         }
 
 
-        public function testShouldDeleteProduct(){
+        public function testShouldDeleteProduct()
+        {
             $row = current(Product::orderBy('id', 'desc')->limit(1)->get()->toArray());
             $this->delete(sprintf("products/%s", $row['id']), [], []);
             $this->seeStatusCode(200);

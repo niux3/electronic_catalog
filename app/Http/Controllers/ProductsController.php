@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use App\Models\Product;
 
@@ -10,10 +11,9 @@ class ProductsController extends Controller
 {
     public function index()
     {
-        
         $products = Product::join('categories', 'categories.id', '=', 'products.category_id')
-            ->select('products.name', 'products.sku', 'categories.name AS category', 'products.id', 'products.quantity', 'products.price', 'products.created_at', 'products.updated_at')
-            ->get();
+        ->select('products.name', 'products.sku', 'categories.name AS category', 'products.id', 'products.quantity', 'products.price', 'products.created_at', 'products.updated_at')
+        ->get();
         Log::info(sprintf("display products by : %s", request()->ip()));
         return response()->json($products);
     }

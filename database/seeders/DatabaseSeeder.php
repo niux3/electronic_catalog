@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use \App\Models\Category;
 use \App\Models\Product;
 use \App\Models\User;
@@ -17,7 +19,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $data = json_decode(file_get_contents('./mock.json'));
+        $data = json_decode(file_get_contents('./electronic-catalog.json'));
         foreach($data as $k => $rows){
             if($k === 'products'){
                 foreach($rows as $row){
@@ -46,6 +48,8 @@ class DatabaseSeeder extends Seeder
                     $user = new User();
                     $user->name = $row->name;
                     $user->email = $row->email;
+                    $user->password = Hash::make($row->password);
+                    $user->api_token = hash('sha256', Str::random(60));
                     $user->save();
                 }
             }

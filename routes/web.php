@@ -13,14 +13,25 @@
 |
 */
 
-// $router->get('/', function () use ($router) {
-//     return $router->app->version();
-// });
-$middleware = ['middleware' => 'auth'];
 $router->group([], function () use ($router) {
     $router->get('/products', [
         'as' => 'products_index', 'uses' => 'ProductsController@index'
     ]);
+
+    $router->get('/products/{id}', [
+        'as' => 'products_show', 'uses' => 'ProductsController@show'
+    ]);
+
+    $router->get('/categories', [
+        'as' => 'categories_index', 'uses' => 'CategoriesController@index'
+    ]);
+
+    $router->post('/register','UsersController@create');
+    $router->post('/login','UsersController@login');
+});
+
+
+$router->group(['middleware' => 'auth'], function () use ($router) {
 
     $router->post('/products', [
         'as' => 'products_create', 'uses' => 'ProductsController@create'
@@ -32,13 +43,5 @@ $router->group([], function () use ($router) {
 
     $router->delete('/products/{id}', [
         'as' => 'products_destroy', 'uses' => 'ProductsController@destroy'
-    ]);
-
-    $router->get('/products/{id}', [
-        'as' => 'products_show', 'uses' => 'ProductsController@show'
-    ]);
-
-    $router->get('/categories', [
-        'as' => 'categories_index', 'uses' => 'CategoriesController@index'
     ]);
 });

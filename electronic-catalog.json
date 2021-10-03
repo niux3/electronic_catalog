@@ -32,11 +32,13 @@
   "users": [
     {
       "name": "Bobby Fischer",
-      "email": "bobby@foo.com"
+      "email": "bobby@foo.com",
+      "password" : "123456"
     },
     {
       "name": "Betty Rubble",
-      "email": "betty@foo.com"
+      "email": "betty@foo.com",
+      "password" : "123456"
     }
   ]
 }
